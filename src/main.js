@@ -1,22 +1,28 @@
 import 'phaser';
+import GameScene from './scenes/GameScene';
+import OverScene from './scenes/OverScene';
 
-const config = {
-	type: Phaser.WEBGL,
+const game = new Phaser.Game({
+	type: Phaser.AUTO,
 	pixelArt: true,
 	roundPixels: true,
 	parent: 'content',
-	width: 750,
-	height: 1334,
+	width: 800,
+	height: 600,
+	// 物理引擎
 	physics: {
 		default: 'arcade',
 		arcade: {
+			// 重力设置
 			gravity: {
-				y: 800
+				y: 1000,
 			},
-			debug: false
+			debug: false,
 		},
 	},
-	scene: [],
-};
-
-const game = new Phaser.Game(config);
+	// 场景
+	scene: [
+		GameScene,
+		OverScene,
+	],
+});
